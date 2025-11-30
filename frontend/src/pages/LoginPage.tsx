@@ -1,6 +1,15 @@
 import { useState } from "react";
 
 export default function LoginPage() {
+  // 1. Create state variables to hold the user's input
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    console.log("Logging in with:", email, password);
+    // This is where we will connect to your Python backend later!
+  };
+
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
@@ -11,6 +20,9 @@ export default function LoginPage() {
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input 
               type="email" 
+              // 2. Connect the input to the state
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="mt-1 block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               placeholder="you@example.com"
             />
@@ -20,6 +32,9 @@ export default function LoginPage() {
             <label className="block text-sm font-medium text-gray-700">Password</label>
             <input 
               type="password" 
+              // 3. Connect the password to the state
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               placeholder="••••••••"
             />
@@ -27,6 +42,7 @@ export default function LoginPage() {
 
           <button 
             type="button" 
+            onClick={handleLogin}
             className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
             Sign In
